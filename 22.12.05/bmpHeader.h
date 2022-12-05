@@ -6,7 +6,7 @@ typedef struct __attribute__((__packed__))tagBITMAPFILEhEADER{
 		unsigned int bfSize;
 		unsigned short bfReservaed1;
 		unsigned short bfReserved2;
-		unsigned int bfoffBits;
+		unsigned int bfOffBits;
 }BITMAPFILEHEADER;
 
 typedef struct{

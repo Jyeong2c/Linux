@@ -59,7 +59,7 @@ int main(int argc, char** argv)
     printf("Image Size : %d\n", imageSize);
 	printf("paddingSize :%d\n",paddingSize);	
     printf("padimg : %d\n",imageSize+paddingSize);
-
+	printf("out :%d\n", outimg);
     inimg = (ubyte*)malloc(sizeof(ubyte)*imageSize+paddingSize); 
     outimg = (ubyte*)malloc(sizeof(ubyte)*imageSize+paddingSize); 
 	padimg = (ubyte*)malloc(sizeof(ubyte)*imageSize+paddingSize);
