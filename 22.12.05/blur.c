@@ -10,11 +10,7 @@
 #define LIMIT_UBYTE(n) ((n)>UCHAR_MAX)?UCHAR_MAX:((n)<0)?0:(n)
 
 typedef unsigned char ubyte;
-inline unsigned char clip(int value, int min, int max); 
-unsigned char clip(int value, int min, int max)
-{
-    return(value > max? max : value < min? min : value);
-}
+
 int main(int argc, char** argv) 
 {
     FILE* fp; 
@@ -68,9 +64,9 @@ int main(int argc, char** argv)
     fclose(fp);
 
     // define the kernel
-    float kernel[3][3] = { {-1.0, -1.0, -1.0},
-                           {-1.0, 9, -1.0},
-                           {-1.0, -1.0, -1.0} };
+    float kernel[3][3] = { {1/9.0, 1/9.0, 1/9.0},
+                           {1/9.0, 1/9.0, 1/9.0},
+                           {1/9.0, 1/9.0, 1/9.0} };
     //memset(outimg, 0, sizeof(ubyte)*imageSize);
 
 	memset(outimg, 0, sizeof(ubyte)*imageSize+paddingSize);
@@ -97,7 +93,7 @@ int main(int argc, char** argv)
                         sum += kernel[i+1][j+1]*inimg[(x-i*elemSize)+(y-j)*size+z];
                     }
                 }
-                outimg[x+y*size+z] = clip(sum,0,255);
+                outimg[x+y*size+z] = sum;
             }
         }
 	} 
@@ -120,7 +116,6 @@ int main(int argc, char** argv)
     
     free(inimg); 
     free(outimg);
-	free(padimg);
     
     return 0;
 }
