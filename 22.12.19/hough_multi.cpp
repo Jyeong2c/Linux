@@ -8,7 +8,7 @@ void detect_maxObject(Mat img, Rect& rect)
 	int max_area =0;
 	for(int i =0; i<(int)contours.size();i++)
 	{
-		Rect r = boundingRect(contours[1]);
+		Rect r = boundingRect(contours[i]);
 		if(max_area <r.area()){
 			max_area = r.area();
 			rect =r;
@@ -26,7 +26,7 @@ int main()
 	double rho = 1, theta =CV_PI/180;
 	vector<Vec2f>lines;
 
-	Mat image = imread("../image/line2.bmp",1);
+	Mat image = imread("../image/5.tif",1);
 	CV_Assert(image.data);
 
 	cvtColor(image,gray,COLOR_BGR2GRAY);
@@ -35,8 +35,8 @@ int main()
 	
 	detect_maxObject(morph,rect);
 	
-	Canny(th_gray,canny,40,100);
-	//Canny(th_gray(rect),canny,40,100);
+//	Canny(gray,canny,40,100);
+	Canny(th_gray(rect),canny,40,100);
 	houghLines(canny,lines,rho,theta,50);
 	draw_houghLines(canny,canny_line,lines,1);
 
