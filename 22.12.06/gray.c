@@ -20,7 +20,7 @@ int main(int argc, char** argv)
     int x, y, z, imageSize;
 
     if(argc != 3) {
-        fprintf(stderr, "usage : %s input.bmp output.bmp\n", argv[0]);
+        fprintf(stderr, "usage : %s \n", argv[0]);
         return -1;
     }
     
