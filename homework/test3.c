@@ -58,8 +58,6 @@ int main(int argc, char** argv)
 			outimg[y+1]= inimg[y+1];
 			outimg[y+2]= inimg[y+2];
         }
-     
-	palrgb = (RGBQUAD*)malloc(sizeof(RGBQUAD)*256);
 	for(x = 0; x < 256; x++) {
         palrgb[x].rgbBlue = palrgb[x].rgbGreen = palrgb[x].rgbRed = x;
         palrgb[x].rgbReserved = 0;
